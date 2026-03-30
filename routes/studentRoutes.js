@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Student = require('../models/Student');
 
-// GET - View all registered students
 router.get('/', async (req, res) => {
     try {
         const students = await Student.find();
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET - Get single student
 router.get('/:id', async (req, res) => {
     try {
         const student = await Student.findById(req.params.id);
@@ -23,7 +21,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// POST - Register a new student
 router.post('/', async (req, res) => {
     try {
         const newStudent = new Student(req.body);
