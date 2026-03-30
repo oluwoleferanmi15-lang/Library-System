@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Author = require('../models/Author');
 
-// GET all authors
 router.get('/', async (req, res) => {
     try {
         const authors = await Author.find();
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET one author
 router.get('/:id', async (req, res) => {
     try {
         const author = await Author.findById(req.params.id);
@@ -23,7 +21,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// POST create author
 router.post('/', async (req, res) => {
     try {
         const author = new Author(req.body);
@@ -34,7 +31,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// PUT update author
 router.put('/:id', async (req, res) => {
     try {
         const updated = await Author.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -45,7 +41,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE author
 router.delete('/:id', async (req, res) => {
     try {
         const deleted = await Author.findByIdAndDelete(req.params.id);
