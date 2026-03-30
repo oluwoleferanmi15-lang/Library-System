@@ -14,7 +14,7 @@ const bookSchema = new mongoose.Schema({
         enum: ['IN', 'OUT'],
         default: 'IN'
     },
-    authors: [{                          // Array for multiple authors
+    authors: [{                         
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Author',
         required: true
