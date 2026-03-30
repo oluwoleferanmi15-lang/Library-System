@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../models/Book');
 
-// POST - Add a new book
 router.post('/', async (req, res) => {
     try {
         const newBook = new Book(req.body);
@@ -13,7 +12,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// GET - Get all books with populated references
 router.get('/', async (req, res) => {
     try {
         const books = await Book.find()
@@ -26,7 +24,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET - Get single book by ID (with all references populated)
 router.get('/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
@@ -42,7 +39,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// PUT - Update book
 router.put('/:id', async (req, res) => {
     try {
         const updatedBook = await Book.findByIdAndUpdate(
@@ -59,7 +55,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE - Delete book
 router.delete('/:id', async (req, res) => {
     try {
         const deletedBook = await Book.findByIdAndDelete(req.params.id);
@@ -70,7 +65,6 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-// POST /books/:id/borrow - Borrow a book
 router.post('/:id/borrow', async (req, res) => {
     try {
         const { studentId, attendantId, returnDate } = req.body;
@@ -93,7 +87,6 @@ router.post('/:id/borrow', async (req, res) => {
     }
 });
 
-// POST /books/:id/return - Return a book
 router.post('/:id/return', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
