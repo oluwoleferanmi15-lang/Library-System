@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Attendant = require('../models/Attendant');
 
-// GET all attendants
 router.get('/', async (req, res) => {
     try {
         const attendants = await Attendant.find();
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET one attendant
 router.get('/:id', async (req, res) => {
     try {
         const attendant = await Attendant.findById(req.params.id);
@@ -23,7 +21,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// POST create attendant
+
 router.post('/', async (req, res) => {
     try {
         const attendant = new Attendant(req.body);
